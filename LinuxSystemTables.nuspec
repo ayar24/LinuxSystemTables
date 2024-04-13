@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Internix Systems</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <description>Table component for inspecting Linux systems</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Linux Process</tags>
+  </metadata>
+</package>
