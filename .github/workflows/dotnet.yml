@@ -29,6 +29,7 @@ jobs:
       run:
         $version = [xml] (Get-Content LinuxSystemTables.csproj).Project.PropertyGroup.Version
         Write-Output "::set-output name=version::$version"
+      shell: pwsh
     - name: Pack
       run: nuget pack LinuxSystemTables.csproj -Properties Configuration=Release -Version ${{ steps.extract_version.outputs.version }}
       env:
