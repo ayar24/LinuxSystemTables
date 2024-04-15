@@ -29,4 +29,4 @@ jobs:
     - name: Publish to NuGet - Set Key
       run: nuget setApiKey ${{ secrets.NUGET_API_KEY }}
     - name: Publish to NuGet
-      run: nuget push ./LinuxSystemTables.1.0.0.nupkg -Source https://api.nuget.org/v3/index.json
+      run: nuget push ./LinuxSystemTables.1.0.0.nupkg -Source https://api.nuget.org/v3/index.json --force
