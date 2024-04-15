@@ -16,6 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Extract version from project file
+      id: extract_version
+      run: |
+           $version = Select-String -Path LinuxSystemTables.csproj -Pattern '<Version>(.+?)<\/Version>' | ForEach-Object { $_.Matches.Groups[1].Value }
+           Write-Output "::set-output name=version::$version"
+      shell: pwsh
     - name: Install Visual Studio Build Tools
       uses: microsoft/setup-msbuild@v1
     - name: Restore NuGet packages
@@ -24,12 +30,6 @@ jobs:
       run: dotnet restore
     - name: Build
       run: msbuild /p:Configuration=Release LinuxSystemTables.sln
-    - name: Extract version from project file
-      id: extract_version
-      run: |
-           $version = Select-String -Path YourProject.csproj -Pattern '<Version>(.+?)<\/Version>' | ForEach-Object { $_.Matches.Groups[1].Value }
-           Write-Output "::set-output name=version::$version"
-      shell: pwsh
     - name: Pack
       run: nuget pack LinuxSystemTables.csproj -Properties Configuration=Release -Version ${{ steps.extract_version.outputs.version }}
       env:
