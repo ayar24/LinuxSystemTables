@@ -19,7 +19,7 @@ jobs:
     - name: Extract version from project file
       id: extract_version
       run: |
-           $version = Select-String -Path LinuxSystemTables.csproj -Pattern '<Version>(.+?)<\/Version>' | ForEach-Object { $_.Matches.Groups[1].Value }
+           $version = Select-String -Path LinuxSystemTables.csproj -Pattern '<NuVersion>(.+?)<\/NuVersion>' | ForEach-Object { $_.Matches.Groups[1].Value }
            Write-Output "::set-output name=version::$version"
       shell: pwsh
     - name: Install Visual Studio Build Tools
