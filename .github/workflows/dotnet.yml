@@ -27,7 +27,7 @@ jobs:
     - name: Extract version from project file
       id: extract_version
       run:
-        $version = [xml] (Get-Content LinuxSystemTables.csproj).Project.PropertyGroup.Version
+        $version = [xml] (Get-Content LinuxSystemTables.csproj).Project.PropertyGroup.Version |
         Write-Output "::set-output name=version::$version"
       shell: pwsh
     - name: Pack
