@@ -37,4 +37,4 @@ jobs:
     - name: Publish to NuGet - Set Key
       run: nuget setApiKey ${{ secrets.NUGET_API_KEY }}
     - name: Publish to NuGet
-      run: nuget push ./LinuxSystemTables.${{ steps.extract_version.outputs.version }.nupkg -Source https://api.nuget.org/v3/index.json --force
+      run: nuget push ./LinuxSystemTables.${{ steps.extract_version.outputs.version }}.nupkg -Source https://api.nuget.org/v3/index.json --force
