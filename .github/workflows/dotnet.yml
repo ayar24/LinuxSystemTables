@@ -25,7 +25,9 @@ jobs:
     - name: Build
       run: msbuild /p:Configuration=Release LinuxSystemTables.sln
     - name: Pack
-      run: nuget pack LinuxSystemTables.csproj -Properties Configuration=Release
+      run: nuget pack LinuxSystemTables.csproj -Properties Configuration=Release -Version ${{ version }}
+      env:
+        version: ${{ steps.extract_version.outputs.version }}
     - name: Publish to NuGet - Set Key
       run: nuget setApiKey ${{ secrets.NUGET_API_KEY }}
     - name: Publish to NuGet
