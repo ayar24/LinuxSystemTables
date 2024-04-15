@@ -24,6 +24,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: msbuild /p:Configuration=Release LinuxSystemTables.sln
+    - name: Extract version from project file
+      id: extract_version
+      run: echo "::set-output name=version::$(grep -oP '<Version>(\d+\.\d+\.\d+)</Version>' LinuxSystemTables.csproj | sed 's/<\/\?Version>//g')"
     - name: Pack
       run: nuget pack LinuxSystemTables.csproj -Properties Configuration=Release -Version ${{ version }}
       env:
